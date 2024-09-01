@@ -1,4 +1,3 @@
-import Logo from "../../../src/assets/logo.png";
 import GoogleMaps from "../medium/GoogleMaps";
 
 export default function Footer() {
@@ -8,7 +7,7 @@ export default function Footer() {
         <div className="flex justify-between">
           <div className="max-w-[50%] flex gap-20">
             <div className="flex flex-col gap-5">
-              <img src={Logo} alt="logo" />
+              <img src="/src/assets/logo.png" alt="BimbelOne" />
 
               <h1 className="text-[16px] font-bold capitalize tracking-wide">
                 Our menu
