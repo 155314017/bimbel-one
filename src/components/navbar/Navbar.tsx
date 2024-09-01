@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "../../assets/logo.png"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -10,7 +11,7 @@ export default function Navbar() {
     <div>
       <nav className="h-[72px] bg-white shadow-lg flex justify-center fixed top-0 left-0 right-0 z-50">
         <div className="container flex justify-between items-center md:max-w-[1328px]">
-          <img src="/src/assets/logo.png" alt="bimbel-one" className="cursor-pointer" />
+          <img src={Logo} alt="bimbel-one" className="cursor-pointer" />
           <div className="md:hidden z-50" onClick={toggleMenu}>
             <div className="space-y-2 cursor-pointer">
               {isOpen ? (
