@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="container flex justify-between items-center px-6 md:px-0 md:max-w-[1328px]">
           <img src={Logo} alt="bimbel-one" className="cursor-pointer" />
           <div className="md:hidden z-50" onClick={toggleMenu}>
-            <div className="transition-transform duration-300 ease-in-out">
+            <div className="{`transition-transform duration-300 ease-in-out transform ${isOpen ? 'rotate-90' : 'rotate-0'}`}">
               {isOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export default function Navbar() {
           <div
             className={`${
               isOpen ? "block" : "hidden"
-            } absolute shadow-xl top-[70px] left-0 w-full bg-white transition-transform duration-300 ease-in-out md:static md:flex md:items-center md:w-auto`}
+            } absolute shadow-xl md:shadow-none top-[70px] left-0 w-full bg-white transition-transform duration-300 ease-in-out md:static md:flex md:items-center md:w-auto`}
           >
             <ul className="flex flex-col gap-4 py-4 items-center md:flex-row md:gap-12 cursor-pointer text-decoration-none">
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
