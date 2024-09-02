@@ -55,7 +55,7 @@ export default function HeaderCarousel() {
 
   return (
     <div>
-      <div className="w-[1318px] h-[308px] rounded-[10px] relative bg-gray-900">
+      <div className="w-[330px] h-[308px] rounded-[10px] relative bg-gray-900 md:w-[1318px]">
         <img
           src={shuffledImages[currentIndex]}
           alt="Carousel"
@@ -74,9 +74,9 @@ export default function HeaderCarousel() {
             className="h-[50px] w-[50px] text-[#125B9A]"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </div>
@@ -92,9 +92,9 @@ export default function HeaderCarousel() {
             className="h-[50px] w-[50px] text-[#125B9A]"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </div>

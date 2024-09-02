@@ -34,8 +34,8 @@ export default function TeamPhoto() {
   return (
     <div>
       <div className="flex justify-between w-[1318px]">
-        {teamPhoto.map((person) => (
-          <div className="flex flex-col items-center gap-5">
+        {teamPhoto.map((person, idx) => (
+          <div key={idx} className="flex flex-col items-center gap-5">
             <div className="w-[223px] h-[223px] rounded-full bg-slate-300">
               <img
                 src={person.imageSrc}
