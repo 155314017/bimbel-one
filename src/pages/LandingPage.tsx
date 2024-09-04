@@ -1,7 +1,7 @@
 import HeaderCarousel from "../components/medium/HeaderCarousel";
 import TeamPhoto from "../components/medium/TeamPhoto";
-import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
+import { Link } from "react-router-dom";
 
 const caraDaftar = [
   {
@@ -29,8 +29,6 @@ const caraDaftar = [
 export default function LandingPage() {
   return (
     <div>
-      <Navbar />
-
       {/* banner */}
       <div className="flex justify-center md:mt-[100px] mt-[90px]">
         <div className="relative">
@@ -43,7 +41,7 @@ export default function LandingPage() {
               Bimbingan Belajar One
             </h1>
             <button className="bg-[#E85F10] border-2 border-[#E85F10] text-white w-[150px] h-[40px] md:w-[190px] md:h-[55px] font-bold rounded-lg text-[12px] md:text-[14px] tracking-wider mt-[20px] shadow-lg transition-all duration-300 ease-in-out hover:bg-black/50 hover:text-[#E85F10]">
-              Registration Now!
+              <Link to="/SignUp">Registration Now!</Link>
             </button>
           </div>
         </div>

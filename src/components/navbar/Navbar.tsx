@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,7 +55,7 @@ export default function Navbar() {
           >
             <ul className="flex flex-col gap-4 py-4 items-center md:flex-row md:gap-12 cursor-pointer text-decoration-none">
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                Home
+                <Link to="/">Home</Link>
               </li>
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
                 About
@@ -71,7 +72,7 @@ export default function Navbar() {
             </ul>
             <div className="flex justify-center mb-5 md:mb-0">
               <button className="md:ml-8 bg-[#E85F10] border-2 border-[#E85F10] rounded-lg text-white px-4 py-1 font-bold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-[#E85F10]">
-                Sign Up
+                <Link to="/signup">Sign Up</Link>
               </button>
             </div>
           </div>

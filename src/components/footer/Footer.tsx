@@ -41,24 +41,24 @@ export default function Footer() {
               </h1>
               <div className="md:space-y-2">
                 <div className="flex">
-                  <p className="text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">
+                  <p className="md:text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">
                     Email:
                   </p>
-                  <p className="text-base text-white md:text-[14px] text-[12px]">
+                  <p className="md:text-base text-white md:text-[14px] text-[12px]">
                     9wSbU@example.com
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">
+                  <p className="md:text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">
                     Phone:
                   </p>
-                  <p className="text-base text-white md:text-[14px] text-[12px]">
+                  <p className="md:text-base text-white md:text-[14px] text-[12px]">
                     (+91) 1234567890
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">Fax:</p>
-                  <p className="text-base text-white md:text-[14px] text-[12px]">
+                  <p className="md:text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">Fax:</p>
+                  <p className="md:text-base text-white md:text-[14px] text-[12px]">
                     (+91) 1234567890
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                 <h1 className="md:text-[16px] text-[12px] font-bold capitalize tracking-wide md:mb-4 mb-2">
                   address
                 </h1>
-                <p className="text-base text-white md:text-[14px] text-[12px]">
+                <p className="md:text-base text-white md:text-[14px] text-[12px]">
                   Indonesia - DIY <br />
                   Jalan Jendal Sudirman KM 20, No.50, Rt.23, Rw.34
                   <br />
