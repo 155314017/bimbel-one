@@ -1,7 +1,7 @@
 import HeaderCarousel from "../components/medium/HeaderCarousel";
 import TeamPhoto from "../components/medium/TeamPhoto";
 import Footer from "../components/footer/Footer";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const caraDaftar = [
   {
@@ -27,6 +27,12 @@ const caraDaftar = [
 ];
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/SignUp");
+  };
+
   return (
     <div>
       {/* banner */}
@@ -40,8 +46,11 @@ export default function LandingPage() {
             <h1 className="text-[32px] text-white font-bold md:text-[40px]">
               Bimbingan Belajar One
             </h1>
-            <button className="bg-[#E85F10] border-2 border-[#E85F10] text-white w-[150px] h-[40px] md:w-[190px] md:h-[55px] font-bold rounded-lg text-[12px] md:text-[14px] tracking-wider mt-[20px] shadow-lg transition-all duration-300 ease-in-out hover:bg-black/50 hover:text-[#E85F10]">
-              <Link to="/SignUp">Registration Now!</Link>
+            <button
+              onClick={handleClick}
+              className="bg-[#E85F10] border-2 border-[#E85F10] text-white w-[150px] h-[40px] md:w-[190px] md:h-[55px] font-bold rounded-lg text-[12px] md:text-[14px] tracking-wider mt-[20px] shadow-lg transition-all duration-300 ease-in-out hover:bg-black/50 hover:text-[#E85F10]"
+            >
+              Registration Now!
             </button>
           </div>
         </div>
