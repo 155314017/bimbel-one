@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div>
       <div className="mt-[50px] bg-[#202020] text-white md:p-12 p-6">
-        <div className="flex md:flex-row flex-col md:justify-between">
+        <div className="flex md:flex-row flex-col md:justify-between lg:justify-center md:gap-20 lg:gap-0">
           <div className="md:max-w-[50%] flex md:gap-20 gap-10">
             <div className="flex flex-col gap-5">
               <img src={Logo} alt="BimbelOne" />
@@ -77,7 +77,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="md:max-w-[50%] w-full flex justify-center mt-8 md:mt-0">
+          <div className="md:max-w-[50%] w-full flex justify-center mt-8 md:mt-0 lg:justify-end">
             <GoogleMaps />
           </div>
         </div>
