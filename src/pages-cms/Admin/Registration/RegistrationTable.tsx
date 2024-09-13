@@ -1,7 +1,7 @@
 import SearchBar from "../../../components/small/SearchBar";
 import { useState } from "react";
 import { useDataRegistrasi } from "../../../services/API/cms/FetchDataRegistrasi";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 export default function RegistrationTable() {
   // const [dataRegis, setDataRegis] = useState<DataRegistrasi[]>([]);
@@ -30,17 +30,21 @@ export default function RegistrationTable() {
   }
 
   if (isError) {
-    toast.error('Failed to fetch data');
+    toast.error("Failed to fetch data");
     return <div>Error loading data</div>;
   }
 
-  const displayData = dataRegis.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+  const displayData = Array.isArray(dataRegis)
+    ? dataRegis.slice((page - 1) * rowsPerPage, page * rowsPerPage)
+    : [];
 
   const handleChangePage = (_event: React.MouseEvent, newPage: number) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(1);
   };
@@ -54,50 +58,50 @@ export default function RegistrationTable() {
       </div>
 
       <div className="max-h-[500px] overflow-y-auto">
-          <table className="table-auto w-full border">
-            <thead>
-              <tr className="sticky top-0 bg-slate-50">
-                <th className="border text-[12px] p-1">Id</th>
-                <th className="border text-[12px] p-1">Name</th>
-                <th className="border text-[12px] p-1">Email</th>
-                <th className="border text-[12px] p-1">Type</th>
-                <th className="border text-[12px] p-1">Status</th>
-                <th className="border text-[12px] p-1 w-[120px]">Action</th>
+        <table className="table-auto w-full border">
+          <thead>
+            <tr className="sticky top-0 bg-slate-50">
+              <th className="border text-[12px] p-1">Id</th>
+              <th className="border text-[12px] p-1">Name</th>
+              <th className="border text-[12px] p-1">Email</th>
+              <th className="border text-[12px] p-1">Type</th>
+              <th className="border text-[12px] p-1">Status</th>
+              <th className="border text-[12px] p-1 w-[120px]">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {displayData.map((data, index) => (
+              <tr key={index}>
+                <td className="border capitalize p-2 text-center text-[12px]">
+                  {data.teacher_id}
+                </td>
+                <td className="border capitalize p-2 text-[12px] bg-slate-100">
+                  {data.full_name}
+                </td>
+                <td className="border p-2 text-[12px]">{data.email}</td>
+                <td className="border capitalize p-2 text-center text-[12px] bg-slate-100">
+                  {data.type}
+                </td>
+                <td className="border p-2 text-center text-[12px]">
+                  <span
+                    className={`px-2 py-1 rounded-md font-bold tracking-wide lowercase ${
+                      data.status === "active"
+                        ? "bg-green-100 text-green-500"
+                        : "bg-red-100 text-red-500"
+                    }`}
+                  >
+                    {data.status}
+                  </span>
+                </td>
+                <td className="border capitalize p-2 flex justify-center gap-5 bg-slate-100">
+                  <button className="border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50">
+                    activate
+                  </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {displayData.map((data, index) => (
-                <tr key={index}>
-                  <td className="border capitalize p-2 text-center text-[12px]">
-                    {data.teacher_id}
-                  </td>
-                  <td className="border capitalize p-2 text-[12px] bg-slate-100">
-                    {data.full_name}
-                  </td>
-                  <td className="border p-2 text-[12px]">{data.email}</td>
-                  <td className="border capitalize p-2 text-center text-[12px] bg-slate-100">
-                    {data.type}
-                  </td>
-                  <td className="border p-2 text-center text-[12px]">
-                    <span
-                      className={`px-2 py-1 rounded-md font-bold tracking-wide lowercase ${
-                        data.status === "active"
-                          ? "bg-green-100 text-green-500"
-                          : "bg-red-100 text-red-500"
-                      }`}
-                    >
-                      {data.status}
-                    </span>
-                  </td>
-                  <td className="border capitalize p-2 flex justify-center gap-5 bg-slate-100">
-                    <button className="border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50">
-                      activate
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
       </div>
       {/* Pagination Controls */}
       <div className="flex justify-end items-center mt-4 gap-3">
