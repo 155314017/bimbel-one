@@ -31,7 +31,7 @@ export default function LoginPage() {
               localStorage.setItem("userType", userType);
 
               if (userType === "Administrator") {
-                navigate("/admin/dashboard");
+                navigate("/cms/admin/*");
               } else if (userType === "Teacher") {
                 navigate("/teacher/*");
               } else if (userType === "Student") {

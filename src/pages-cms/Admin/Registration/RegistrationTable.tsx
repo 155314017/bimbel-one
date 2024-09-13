@@ -1,62 +1,59 @@
 import SearchBar from "../../../components/small/SearchBar";
-import { useEffect, useState } from "react";
-import {
-  FetchDataRegistrasi,
-  DataRegistrasi,
-} from "../../../services/API/cms/FetchDataRegistrasi";
+import { useState } from "react";
+import { useDataRegistrasi } from "../../../services/API/cms/FetchDataRegistrasi";
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function RegistrationTable() {
-  const [dataRegis, setDataRegis] = useState<DataRegistrasi[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [dataRegis, setDataRegis] = useState<DataRegistrasi[]>([]);
+  // const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const fetchedData = await FetchDataRegistrasi();
+  //       setDataRegis(fetchedData);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const fetchedData = await FetchDataRegistrasi();
-        setDataRegis(fetchedData);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getData();
-  }, []);
+  const { data: dataRegis = [], isLoading, isError } = useDataRegistrasi();
 
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  const displayData = dataRegis.slice(
-    (page - 1) * rowsPerPage,
-    page * rowsPerPage
-  );
+  if (isError) {
+    toast.error('Failed to fetch data');
+    return <div>Error loading data</div>;
+  }
+
+  const displayData = dataRegis.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 
   const handleChangePage = (_event: React.MouseEvent, newPage: number) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(1);
   };
 
   return (
     <div>
+      <Toaster />
       <div className="mb-5 flex justify-between items-center">
         <h1 className="text-xl font-bold">Registration List</h1>
         <SearchBar />
       </div>
 
       <div className="max-h-[500px] overflow-y-auto">
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
           <table className="table-auto w-full border">
             <thead>
               <tr className="sticky top-0 bg-slate-50">
@@ -101,7 +98,6 @@ export default function RegistrationTable() {
               ))}
             </tbody>
           </table>
-        )}
       </div>
       {/* Pagination Controls */}
       <div className="flex justify-end items-center mt-4 gap-3">

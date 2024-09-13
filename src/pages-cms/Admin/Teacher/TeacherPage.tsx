@@ -75,6 +75,7 @@ export default function TeacherTable() {
 
       {/* Pagination */}
       <Pagination
+        key={currentPage}
         dataPerPage={dataPerPage}
         totalData={datas.length}
         paginate={paginate}

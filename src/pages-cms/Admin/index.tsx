@@ -45,7 +45,7 @@ export default function AdminCms() {
               isCollapsed ? "justify-center" : ""
             }`}
           >
-            <Link to="/admin/dashboard">
+            <Link to="dashboard">
               <span className="text-xl">
                 <FontAwesomeIcon icon={faChartLine} />
               </span>
@@ -59,7 +59,7 @@ export default function AdminCms() {
               isCollapsed ? "justify-center" : ""
             }`}
           >
-            <Link to={"/admin/registration"}>
+            <Link to={"registration"}>
               <span className="text-xl">
                 <FontAwesomeIcon icon={faAddressCard} />
               </span>
@@ -73,7 +73,7 @@ export default function AdminCms() {
               isCollapsed ? "justify-center" : ""
             }`}
           >
-            <Link to={"/admin/student"}>
+            <Link to={"student"}>
               <span className="text-xl">
                 <FontAwesomeIcon icon={faGraduationCap} />
               </span>
@@ -87,7 +87,7 @@ export default function AdminCms() {
               isCollapsed ? "justify-center" : ""
             }`}
           >
-            <Link to={"/admin/teacher"}>
+            <Link to={"teacher"}>
               <span className="text-xl">
                 <FontAwesomeIcon icon={faChalkboardUser} />
               </span>
@@ -121,7 +121,6 @@ export default function AdminCms() {
               path="detail-student/:id/:name"
               element={<DetailStudent />}
             />
-
             <Route path="teacher" element={<TeacherPage />} />
           </Routes>
         </div>

@@ -25,7 +25,7 @@ export default function DetailStudent() {
     <div>
       <div className="flex items-center gap-8">
         <button
-          onClick={() => navigate("/admin/student")}
+          onClick={() => navigate("student")}
           className="border-2 border-[#125B9A] w-[40px] h-[40px] rounded-full transition-all ease hover:bg-slate-100"
         >
           <FontAwesomeIcon className="text-[#125B9A]" icon={faArrowLeft} />

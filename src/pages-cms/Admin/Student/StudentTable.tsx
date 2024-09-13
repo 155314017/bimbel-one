@@ -65,7 +65,7 @@ export default function StudentTable() {
                 <td className="border capitalize p-2 flex justify-center gap-5 bg-slate-100">
                   <button
                     onClick={() =>
-                      navigate(`/admin/detail-student/${data.id}/${data.name}`)
+                      navigate(`detail-student/${data.id}/${data.name}`)
                     }
                     className="border-2 border-slate-300 w-[25px] h-[25px] rounded-md flex justify-center bg-white items-center text-[12px] transition-all ease hover:border-[#125B9A]"
                   >
@@ -82,6 +82,7 @@ export default function StudentTable() {
       </div>
       {/* Pagination */}
       <Pagination
+        key={datas.length}
         dataPerPage={dataPerPage}
         totalData={datas.length}
         paginate={paginate}
