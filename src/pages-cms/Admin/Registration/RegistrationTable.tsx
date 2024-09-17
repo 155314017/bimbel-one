@@ -143,7 +143,7 @@ export default function RegistrationTable() {
       {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4 gap-3">
         <h1 className="text-[14px] text-slate-400">
-          Showing {displayData.length} of {dataRegis.length} rows
+          Showing {displayData.length} to {displayData.length} of {displayData.length}
         </h1>
 
         <div className="flex gap-5">
