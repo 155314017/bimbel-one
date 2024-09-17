@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { RegistrationUser } from "../services/API/Registrasi/Registrasi";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import {
+  useRegisterUser,
+  // RegistrationData,
+} from "../services/API/Registrasi/Registrasi";
 export default function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +18,8 @@ export default function SignUp() {
     email: "",
     password: "",
   });
+
+  const { mutate: registerUser, isLoading } = useRegisterUser();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -36,27 +41,22 @@ export default function SignUp() {
       return;
     }
 
-    const registerPromise = RegistrationUser(formData);
-
-    toast.promise(registerPromise, {
-      loading: "Sedang melakukan registrasi...",
-      success: "Registrasi berhasil!",
-      error: (error) =>
-        `${error.response?.data?.message || "Registrasi gagal"}`,
-    });
 
     try {
-      const response = await RegistrationUser(formData);
-      console.log(response);
+      await registerUser(formData);
+      toast.success("Registrasi berhasil!");
       setFormData({
         full_name: "",
         email: "",
         password: "",
       });
+
+      // Arahkan ke halaman login setelah sukses
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error: any) {
+      toast.error(error.response?.data?.message || "Registrasi gagal");
       console.error(error);
     }
   };
@@ -128,7 +128,7 @@ export default function SignUp() {
             className="w-full h-[50px] bg-[#E85F10] rounded-[10px] shadow-md text-white font-bold tracking-wide mt-3 capitalize transition-all duration-300 ease-in-out border-[#E85F10] border-2 hover:bg-transparent hover:text-[#E85F10]"
             type="submit"
           >
-            Sign Up
+            {isLoading ? "Registering..." : "Register"}
           </button>
 
           <p className="text-[14px] mt-3">
