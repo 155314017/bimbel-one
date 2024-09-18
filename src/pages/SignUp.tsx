@@ -1,64 +1,51 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import {
-  useRegisterUser,
-  // RegistrationData,
-} from "../services/API/Registrasi/Registrasi";
-export default function SignUp() {
+import { registerUser } from "../services/API/Registrasi/Registrasi";
+import { useMutation } from "react-query";
+
+const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    password: "",
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const mutation = useMutation(registerUser, {
+    onSuccess: (data) => {
+      toast.success("Registrasi berhasil!");
+      console.log(data);
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.message || "Registrasi gagal");
+      console.error(error);
+    }
   });
 
-  const { mutate: registerUser, isLoading } = useRegisterUser();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
+  // };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formElements = e.currentTarget.elements as HTMLFormControlsCollection;
-    const password = (formElements.namedItem("password") as HTMLInputElement)
-      .value;
-    const confirmPassword = (
-      formElements.namedItem("confirmPassword") as HTMLInputElement
-    ).value;
 
     if (password !== confirmPassword) {
       toast.error("Password tidak cocok");
       return;
     }
 
-
-    try {
-      await registerUser(formData);
-      toast.success("Registrasi berhasil!");
-      setFormData({
-        full_name: "",
-        email: "",
-        password: "",
-      });
-
-      // Arahkan ke halaman login setelah sukses
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    } catch (error: any) {
-      toast.error(error.response?.data?.message || "Registrasi gagal");
-      console.error(error);
-    }
+    mutation.mutate({ fullName, email, password });
   };
 
   const toggleShowPassword = () => {
@@ -78,8 +65,8 @@ export default function SignUp() {
           <h1 className="capitalize text-[14px] mb-2">Full name</h1>
           <input
             name="full_name"
-            value={formData.full_name}
-            onChange={handleChange}
+            value={fullName}
+            onChange={(event) => setFullName(event.target.value)}
             type="text"
             required
             className="w-full md:h-[50px] h-[40px] border-2 rounded-[5px] mb-5 p-3 shadow-md"
@@ -87,8 +74,8 @@ export default function SignUp() {
           <h1 className="capitalize text-[14px] mb-2">email</h1>
           <input
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             required
             type="email"
             className="w-full md:h-[50px] h-[40px] border-2 rounded-[5px] mb-5 p-3 shadow-md"
@@ -97,8 +84,8 @@ export default function SignUp() {
           <div className="relative">
             <input
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               required
               type={showPassword ? "text" : "password"}
               className="w-full md:h-[50px] h-[40px] border-2 rounded-[5px] mb-5 p-3 shadow-md"
@@ -114,6 +101,8 @@ export default function SignUp() {
             <input
               name="confirmPassword"
               type={showPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
               required
               className="w-full md:h-[50px] h-[40px] border-2 rounded-[5px] mb-5 p-3 shadow-md"
             />
@@ -128,7 +117,7 @@ export default function SignUp() {
             className="w-full h-[50px] bg-[#E85F10] rounded-[10px] shadow-md text-white font-bold tracking-wide mt-3 capitalize transition-all duration-300 ease-in-out border-[#E85F10] border-2 hover:bg-transparent hover:text-[#E85F10]"
             type="submit"
           >
-            {isLoading ? "Registering..." : "Register"}
+            {mutation.isLoading ? "Registering..." : "Register"}
           </button>
 
           <p className="text-[14px] mt-3">
@@ -143,3 +132,4 @@ export default function SignUp() {
     </div>
   );
 }
+export default SignUp;
