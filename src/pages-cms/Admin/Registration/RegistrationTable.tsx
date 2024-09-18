@@ -33,7 +33,7 @@ export default function RegistrationTable() {
 
   const dataRegis = apiResponse?.data?.user || [];
 
-  const sortedData = dataRegis.sort((a, b) => {
+  const sortedData = dataRegis.sort((a: User, b: User) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
