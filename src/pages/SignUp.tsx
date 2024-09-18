@@ -25,6 +25,7 @@ const SignUp: React.FC = () => {
         navigate("/login");
       }, 2000);
     },
+
     onError: (error: any) => {
       toast.error(error.response?.data?.message || "Registrasi gagal");
       console.error(error);
@@ -45,7 +46,7 @@ const SignUp: React.FC = () => {
       return;
     }
 
-    mutation.mutate({ fullName, email, password });
+    mutation.mutate({ full_name: fullName, email, password });
   };
 
   const toggleShowPassword = () => {

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
 
-const url = `${BaseUrl}/api-bimbelone/register`;
+const url = `${BaseUrl}/api-bimbelone/registration`;
 
 export const registerUser = async (data: {
-  fullName: string;
+  full_name: string;
   email: string;
   password: string;
 }) => {
