@@ -1,0 +1,24 @@
+.rbc-btn-group button {
+    background-color: #125B9A; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 0 2px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+
+.rbc-btn-group button:hover {
+    background-color: #0D3A6E; 
+    transform: scale(1.05); 
+    color: white;
+}
+
+
+.rbc-btn-group button.rbc-active {
+    background-color: #0A2D4A; 
+    font-weight: bold; 
+}
