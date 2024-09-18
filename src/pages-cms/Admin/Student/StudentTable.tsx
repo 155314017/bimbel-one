@@ -3,20 +3,39 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "../../../components/small/SearchBar";
 import DataRegis from "../../../dummyData/regisData";
-import { useNavigate } from "react-router-dom";
+import DetailStudent from "./DetailStudent";
+
+interface Student {
+  id: string;
+  name: string;
+  status: string;
+}
 
 export default function StudentTable() {
   const datas = DataRegis;
-  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(10);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   const indexOfLastData = currentPage * dataPerPage;
   const indexOfFirstData = indexOfLastData - dataPerPage;
   const currentData = datas.slice(indexOfFirstData, indexOfLastData);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const handleStudentDetail = (studentId: string, studentName: string, studentStatus: string) => {
+    setSelectedStudent({ id: studentId, name: studentName, status: studentStatus });
+  };
+
+  if (selectedStudent) {
+    return (
+      <DetailStudent
+        student={selectedStudent}
+        onBack={() => setSelectedStudent(null)}
+      />
+    );
+  }
 
   return (
     <div>
@@ -64,9 +83,7 @@ export default function StudentTable() {
                 </td>
                 <td className="border capitalize p-2 flex justify-center gap-5 bg-slate-100">
                   <button
-                    onClick={() =>
-                      navigate(`detail-student/${data.id}/${data.name}`)
-                    }
+                    onClick={() => handleStudentDetail(data.id, data.name, data.status)}
                     className="border-2 border-slate-300 w-[25px] h-[25px] rounded-md flex justify-center bg-white items-center text-[12px] transition-all ease hover:border-[#125B9A]"
                   >
                     <FontAwesomeIcon
