@@ -53,40 +53,6 @@ export default function LoginPage() {
     );
   };
 
-  //   try {
-  //     const users = await toast.promise(LoginUser(loginData), {
-  //       loading: "Logging in...",
-  //       success: "Login Success",
-  //       error: () => "Wrong Email or Password",
-  //     });
-
-  //     if (users.length > 0) {
-  //       const user = users[0];
-  //       const accessToken = user.access_token;
-  //       const userType = user.type;
-
-  //       if (accessToken) {
-  //         localStorage.setItem("access_token", accessToken);
-  //         localStorage.setItem("userType", userType);
-
-  //         if (userType === "Administrator") {
-  //           navigate("/admin/dashboard");
-  //         } else if (userType === "Teacher") {
-  //           navigate("/teacher/*");
-  //         } else if (userType === "Student") {
-  //           navigate("/student/*");
-  //         }
-  //       } else {
-  //         throw new Error("Login Failed: No token received");
-  //       }
-  //     } else {
-  //       throw new Error("Login Failed: No user data received");
-  //     }
-  //   } catch (err) {
-  //     console.error("Login failed", err);
-  //   }
-  // };
-
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
