@@ -10,6 +10,7 @@ interface User {
   email: string;
   type: string;
   status: string;
+  createdAt: string;
 }
 
 interface ApiResponse {
@@ -31,7 +32,12 @@ export default function RegistrationTable() {
   } = useDataRegistrasi();
 
   const dataRegis = apiResponse?.data?.user || [];
-  const totalPages = Math.ceil(dataRegis.length / rowsPerPage);
+
+  const sortedData = dataRegis.sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
+  const totalPages = Math.ceil(sortedData.length / rowsPerPage);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -42,9 +48,7 @@ export default function RegistrationTable() {
     return <div>Error loading data</div>;
   }
 
-  const displayData = Array.isArray(dataRegis)
-    ? dataRegis.slice((page - 1) * rowsPerPage, page * rowsPerPage)
-    : [];
+  const displayData = sortedData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 
   const handleChangePage = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -110,14 +114,14 @@ export default function RegistrationTable() {
             {displayData.map((user: User, index: number) => (
               <tr key={index}>
                 <td className="border capitalize p-2 text-center text-[12px]">
-                  {user.teacher_id || "N/A"}
+                  {user.teacher_id ?? "N/A"}
                 </td>
                 <td className="border capitalize p-2 text-[12px] bg-slate-100">
                   {user.full_name}
                 </td>
                 <td className="border p-2 text-[12px]">{user.email}</td>
                 <td className="border uppercase p-2 text-center text-[12px] bg-slate-100">
-                  {user.type || "N/A"}
+                  {user.type ?? "N/A"}
                 </td>
                 <td className="border p-2 text-center text-[12px]">
                   <span
