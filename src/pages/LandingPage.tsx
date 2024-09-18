@@ -51,7 +51,7 @@ export default function LandingPage() {
             </h1>
             <button
               onClick={handleClick}
-              className="bg-[#E85F10] border-2 border-[#E85F10] text-white w-[150px] h-[40px] md:w-[190px] md:h-[55px] font-bold rounded-lg text-[12px] md:text-[14px] tracking-wider mt-[20px] shadow-lg transition-all duration-300 ease-in-out hover:bg-black/50 hover:text-[#E85F10]"
+              className="bg-[#E85F10] text-white w-[150px] h-[40px] md:w-[190px] md:h-[55px] font-bold rounded-lg text-[12px] md:text-[14px] tracking-wider mt-[20px] shadow-lg transition-all duration-300 ease-in-out hover:bg-orange-500 hover:shadow-orange-600"
             >
               Registration Now!
             </button>
