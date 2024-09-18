@@ -50,7 +50,7 @@ export default function AdminCms() {
                 <FontAwesomeIcon icon={faChartLine} />
               </span>
               {!isCollapsed && (
-                <span className="text-base text-[14px] ">Dashboard</span>
+                <span className="text-base text-[14px] ml-3">Dashboard</span>
               )}
             </Link>
           </li>
@@ -64,7 +64,7 @@ export default function AdminCms() {
                 <FontAwesomeIcon icon={faAddressCard} />
               </span>
               {!isCollapsed && (
-                <span className="text-base text-[14px] ">Registration</span>
+                <span className="text-base text-[14px] ml-3">Registration</span>
               )}
             </Link>
           </li>
@@ -78,7 +78,7 @@ export default function AdminCms() {
                 <FontAwesomeIcon icon={faGraduationCap} />
               </span>
               {!isCollapsed && (
-                <span className="text-base text-[14px] ">Student</span>
+                <span className="text-base text-[14px] ml-3">Student</span>
               )}
             </Link>
           </li>
@@ -92,7 +92,7 @@ export default function AdminCms() {
                 <FontAwesomeIcon icon={faChalkboardUser} />
               </span>
               {!isCollapsed && (
-                <span className="text-base text-[14px] ml-1">Teacher</span>
+                <span className="text-base text-[14px] ml-3">Teacher</span>
               )}
             </Link>
           </li>
