@@ -171,7 +171,7 @@ export default function RegistrationTable() {
               typeof number === "number" ? (
                 <button
                   key={index}
-                  className={`shadow-sm border-2 rounded-md capitalize bg-[#125B9A] text-[#125B9A] text-[12px] w-[30px] py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50 ${
+                  className={`shadow-sm border-2 rounded-md capitalize bg-slate-300 text-[#125B9A] text-[12px] w-[30px] py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50 ${
                     page === number ? "bg-slate-50 text-[#125B9A]" : ""
                   }`}
                   onClick={() => handleChangePage(number)}
