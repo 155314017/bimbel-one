@@ -70,9 +70,12 @@ export default function Navbar() {
                 Expertise
               </li>
             </ul>
-            <div className="flex justify-center mb-5 md:mb-0">
-              <button className="md:ml-8 bg-[#E85F10] border-2 border-[#E85F10] rounded-lg text-white px-4 py-1 font-bold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-[#E85F10]">
+            <div className="flex justify-center gap-3 mb-5 md:mb-0">
+              <button className="md:ml-8 bg-[#E85F10] rounded-lg text-white px-4 py-1 font-bold transition-all duration-300 ease-in-out hover:bg-orange-500">
                 <Link to="/signup">Sign Up</Link>
+              </button>
+              <button className="border-2 border-[#E85F10] rounded-lg text-[#E85F10] px-4 py-1 font-bold transition-all duration-300 ease-in-out hover:bg-transparent hover:text-orange-500 hover:border-orange-500">
+                <Link to="/login">Login</Link>
               </button>
             </div>
           </div>
