@@ -11,16 +11,13 @@ const fetchDataRegistrasi = async () => {
   const response = await fetch(`${BaseUrl}/api-bimbelone/data-registration`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       "Access-Token": accessToken,
     },
     body: JSON.stringify({ access_token: accessToken }),
   });
-
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-
   return response.json();
 };
 
