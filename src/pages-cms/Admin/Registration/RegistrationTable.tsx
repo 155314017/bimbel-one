@@ -2,6 +2,7 @@ import SearchBar from "../../../components/small/SearchBar";
 import { useState } from "react";
 import { useDataRegistrasi } from "../../../services/API/cms/FetchDataRegistrasi";
 import { Toaster, toast } from "react-hot-toast";
+import Spinners from "../../../assets/spinners.svg";
 
 interface User {
   id: string;
@@ -40,15 +41,28 @@ export default function RegistrationTable() {
   const totalPages = Math.ceil(sortedData.length / rowsPerPage);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center mt-3">
+       <img
+          src={Spinners}
+          alt="spinner"
+          className="w-10"
+        />
+    </div>;
   }
 
   if (isError) {
     toast.error("Failed to fetch data");
-    return <div>Error loading data</div>;
+    return (
+      <div className="font-bold text-center text-lg mt-3">
+        Error loading data
+      </div>
+    );
   }
 
-  const displayData = sortedData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+  const displayData = sortedData.slice(
+    (page - 1) * rowsPerPage,
+    page * rowsPerPage
+  );
 
   const handleChangePage = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -114,14 +128,14 @@ export default function RegistrationTable() {
             {displayData.map((user: User, index: number) => (
               <tr key={index}>
                 <td className="border capitalize p-2 text-center text-[12px]">
-                  {user.teacher_id ?? "N/A"}
+                  {user.teacher_id ?? "-"}
                 </td>
                 <td className="border capitalize p-2 text-[12px] bg-slate-100">
                   {user.full_name}
                 </td>
                 <td className="border p-2 text-[12px]">{user.email}</td>
                 <td className="border uppercase p-2 text-center text-[12px] bg-slate-100">
-                  {user.type ?? "N/A"}
+                  {user.type ?? "-"}
                 </td>
                 <td className="border p-2 text-center text-[12px]">
                   <span
@@ -144,6 +158,7 @@ export default function RegistrationTable() {
           </tbody>
         </table>
       </div>
+
       {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4 gap-3">
         <h1 className="text-[14px] text-slate-400">
@@ -151,54 +166,54 @@ export default function RegistrationTable() {
         </h1>
 
         <div className="flex gap-5">
-        <div className="flex gap-3 items-center text-[14px] text-slate-400">
-          <select value={rowsPerPage} onChange={handleChangeRowsPerPage}>
-            <option value={10}>10 rows</option>
-            <option value={25}>25 rows</option>
-            <option value={50}>50 rows</option>
-          </select>
-        </div>
-
-        <div className="flex gap-3">
-          {/* previous button */}
-          <button
-            className="shadow-sm border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50"
-            onClick={() => handleChangePage(page - 1)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-
-          {/* Angka Pagination */}
-          <div className="flex gap-2">
-            {paginationNumbers().map((number, index) =>
-              typeof number === "number" ? (
-                <button
-                  key={index}
-                  className={`shadow-sm border-2 rounded-md capitalize bg-slate-300 text-[#125B9A] text-[12px] w-[30px] py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50 ${
-                    page === number ? "bg-slate-50 text-[#125B9A]" : ""
-                  }`}
-                  onClick={() => handleChangePage(number)}
-                >
-                  {number}
-                </button>
-              ) : (
-                <span key={index} className="text-slate-500">
-                  ...
-                </span>
-              )
-            )}
+          <div className="flex gap-3 items-center text-[14px] text-slate-400">
+            <select value={rowsPerPage} onChange={handleChangeRowsPerPage}>
+              <option value={10}>10 rows</option>
+              <option value={25}>25 rows</option>
+              <option value={50}>50 rows</option>
+            </select>
           </div>
 
-          {/* next button */}
-          <button
-            className="shadow-sm border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50"
-            onClick={() => handleChangePage(page + 1)}
-            disabled={page === totalPages}
-          >
-            Next
-          </button>
-        </div>
+          <div className="flex gap-3">
+            {/* previous button */}
+            <button
+              className="shadow-sm border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50"
+              onClick={() => handleChangePage(page - 1)}
+              disabled={page === 1}
+            >
+              Previous
+            </button>
+
+            {/* Angka Pagination */}
+            <div className="flex gap-2">
+              {paginationNumbers().map((number, index) =>
+                typeof number === "number" ? (
+                  <button
+                    key={index}
+                    className={`shadow-sm border-2 rounded-md capitalize bg-slate-300 text-[#125B9A] text-[12px] w-[30px] py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50 ${
+                      page === number ? "bg-slate-50 text-[#125B9A]" : ""
+                    }`}
+                    onClick={() => handleChangePage(number)}
+                  >
+                    {number}
+                  </button>
+                ) : (
+                  <span key={index} className="text-slate-500">
+                    ...
+                  </span>
+                )
+              )}
+            </div>
+
+            {/* next button */}
+            <button
+              className="shadow-sm border-2 rounded-md capitalize bg-[#125B9A] text-slate-50 text-[12px] px-2 py-1 tracking-wide transition-all ease hover:border-[#125B9A] hover:text-[#125B9A] hover:bg-slate-50"
+              onClick={() => handleChangePage(page + 1)}
+              disabled={page === totalPages}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
