@@ -1,15 +1,16 @@
 import { useQuery } from "react-query";
-// import { BaseUrl } from "../BaseUrl";
+import { BaseUrl } from "../BaseUrl";
+import Cookies from "js-cookie";
 
 const fetchDataStudent = async () => {
-  const accessToken = localStorage.getItem("access_token");
+  const accessToken = Cookies.get("access_token");
 
   if (!accessToken) {
     throw new Error("Access token not found");
   }
 
   try {
-    const response = await fetch('/api/api-bimbelone/data-student', {
+    const response = await fetch(`${BaseUrl}/api-bimbelone/data-student`, {
       method: "GET",
       headers: {
         "Access-Token": accessToken,
@@ -37,7 +38,7 @@ const fetchDataStudent = async () => {
 };
 
 export const useDataStudent = () => {
-  return useQuery("data-s tudent", fetchDataStudent, {
+  return useQuery("data-student", fetchDataStudent, {
     staleTime: 300000, // cache data for 5 minutes
     retry: 1, // retry once on failure
     onError: (error) => {
