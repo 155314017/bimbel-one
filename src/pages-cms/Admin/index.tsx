@@ -105,9 +105,7 @@ export default function AdminCms() {
           <img src={Logo} alt="bimbel-one" />
           <div className="flex items-center gap-x-6">
             <SettingButton />
-            <Link to={"/"}>
               <LogoutButton />
-            </Link>
           </div>
         </div>
 
