@@ -12,14 +12,15 @@ const localizer = dayjsLocalizer(dayjs);
 export default function DetailStudent({ student, onBack }: any) {
   const [selectedOption, setSelectedOption] = useState("");
 
-  console.log(student);
-  
-
   const options = [
     { label: "Option 1", value: "1" },
     { label: "Option 2", value: "2" },
     { label: "Option 3", value: "3" },
   ];
+
+  if (!student) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -32,7 +33,7 @@ export default function DetailStudent({ student, onBack }: any) {
         </button>
 
         <div className="flex gap-3">
-          <h1 className="text-xl font-bold capitalize"> {student.name} </h1>
+          <h1 className="text-xl font-bold capitalize"> {student.full_name} </h1>
           <span
             className={`px-2 rounded-md font-bold tracking-wide text-[12px] flex items-center
       ${
