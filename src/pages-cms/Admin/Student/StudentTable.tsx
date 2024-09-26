@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "../../../components/small/SearchBar";
-import { Toaster, toast } from "react-hot-toast";
 import Spinners from "../../../assets/spinners.svg";
-import axios from "axios";
-import { BaseUrl } from "../../../services/API/BaseUrl";
-// import { useDataStudent } from "../../../services/API/cms/FetchDataStudent";
+import { useDataStudent } from "../../../services/API/cms/FetchDataStudent";
 
 interface Student {
   id: string;
@@ -29,45 +25,18 @@ interface ApiResponse {
 export default function StudentTable() {
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [dataStudent, setDataStudent] = useState<Student[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // const {
-  //   data: apiResponse = {} as ApiResponse,
-  //   isLoading,
-  //   isError,
-  // } = useDataStudent();
+  const {
+    data: apiResponse = {} as ApiResponse,
+    isLoading,
+    isError,
+  } = useDataStudent();
 
-  useEffect(() => {
-    const fetchDataStudent = async () => {
-      try {
-        const accessToken = localStorage.getItem("access_token");
-        if (!accessToken) throw new Error("Access token not found");
-
-        const response = await axios.get<ApiResponse>(
-          `${BaseUrl}/api-bimbelone/data-student`,
-          {
-            headers: {
-              "Access-Token": accessToken,
-            },
-          }
-        );
-        setDataStudent(response.data.data.user);
-      } catch (err) {
-        setError("Failed to fetch data");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDataStudent();
-  }, []);
-
-  // const dataStudent = apiResponse?.data?.user || [];
+  const dataStudent = apiResponse?.data?.user || [];
 
   const totalPages = Math.ceil(dataStudent.length / rowsPerPage);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center mt-3">
         <img src={Spinners} alt="spinner" className="w-10" />
@@ -75,8 +44,7 @@ export default function StudentTable() {
     );
   }
 
-  if (error) {
-    toast.error("Failed to fetch data");
+  if (isError) {
     return (
       <div className="font-bold text-center text-lg mt-3">
         Error loading data
@@ -131,7 +99,6 @@ export default function StudentTable() {
 
   return (
     <div>
-      <Toaster />
       <div className="mb-5 flex justify-between items-center">
         <h1 className="text-xl font-bold">Student List</h1>
         <SearchBar />
@@ -189,7 +156,7 @@ export default function StudentTable() {
       {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4 gap-3">
         <h1 className="text-[14px] text-slate-400">
-          Showing {displayData.length} of {dataStudent.length}
+          Showing {page} to {dataStudent.length} of {dataStudent.length}
         </h1>
 
         <div className="flex gap-5">
