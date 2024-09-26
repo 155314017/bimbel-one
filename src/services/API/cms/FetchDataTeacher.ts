@@ -23,24 +23,22 @@ const fetchDataTeacher = async () => {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
 
-    const responseText = await response.text(); // Dapatkan respons sebagai teks
-    console.log("Response Text:", responseText); // Logging respons untuk debugging
-
     try {
-      const data = JSON.parse(responseText); // Parse sebagai JSON
+      const data = await response.json();
       return data;
     } catch (parseError) {
+      // If parsing fails, log the error
       console.error("Failed to parse JSON:", parseError);
       throw new Error("Invalid JSON response");
     }
   } catch (error) {
-    console.error("Failed to fetch data teacher:", error);
-    throw error; // Re-throw error agar react-query bisa menanganinya
+    console.error("Failed to fetch data student:", error);
+    throw error; // Re-throw the error for react-query to handle it
   }
 };
 
 export const useDataTeacher = () => {
-  return useQuery("data-student", fetchDataTeacher, {
+  return useQuery("data-teacher", fetchDataTeacher, {
     staleTime: 300000, // cache data for 5 minutes
     retry: 1, // retry once on failure
     onError: (error) => {
