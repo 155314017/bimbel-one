@@ -1,11 +1,9 @@
 import { useMutation } from "react-query";
 import { BaseUrl } from "../BaseUrl";
 import axios, { AxiosResponse } from "axios";
+import Cookies from "js-cookie";
 
 const url = `${BaseUrl}/api-bimbelone/login`;
-// const headers = {
-//   "Content-Type": "application/json",
-// };
 
 interface LoginData {
   email: string;
@@ -40,7 +38,12 @@ const loginUser = async (loginData: LoginData): Promise<User[]> => {
     const users = response.data.data.user;
 
     if (users.length > 0) {
-      localStorage.setItem("access_token", users[0].access_token);
+      // Simpan access_token ke cookies
+      Cookies.set("access_token", users[0].access_token, {
+        expires: 1, // Expired dalam 1 hari
+        secure: true, // Pastikan secure cookie untuk HTTPS
+        sameSite: 'strict', // Mencegah pengiriman cookie di context pihak ketiga
+      });
     }
     return users;
   } catch (error) {
