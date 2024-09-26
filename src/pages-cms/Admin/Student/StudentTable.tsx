@@ -4,6 +4,7 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "../../../components/small/SearchBar";
 import Spinners from "../../../assets/spinners.svg";
 import { useDataStudent } from "../../../services/API/cms/FetchDataStudent";
+import DetailStudent from "./DetailStudent";
 
 interface Student {
   id: string;
@@ -25,7 +26,7 @@ interface ApiResponse {
 export default function StudentTable() {
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-
+  const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const {
     data: apiResponse = {} as ApiResponse,
     isLoading,
@@ -97,6 +98,21 @@ export default function StudentTable() {
     return pageRange;
   };
 
+  const handleDetailClick = (id: string) => {
+    setSelectedStudentId(id);  // Set student ID ketika detail diklik
+  };
+
+  // Handler untuk kembali ke tabel dari halaman detail
+  const handleBack = () => {
+    setSelectedStudentId(null);  // Kembalikan ke tabel
+  };
+
+  // Jika ada ID student yang dipilih, tampilkan halaman detail
+  if (selectedStudentId) {
+    const selectedStudent = dataStudent.find((student: { id: string; }) => student.id === selectedStudentId);
+    return <DetailStudent student={selectedStudent} onBack={handleBack} />;
+  }
+
   return (
     <div>
       <div className="mb-5 flex justify-between items-center">
@@ -140,7 +156,10 @@ export default function StudentTable() {
                   </span>
                 </td>
                 <td className="border capitalize p-2 flex justify-center gap-5 bg-slate-100">
-                  <button className="border-2 border-slate-300 w-[25px] h-[25px] rounded-md flex justify-center bg-white items-center text-[12px] transition-all ease hover:border-[#125B9A]">
+                  <button
+                    className="border-2 border-slate-300 w-[25px] h-[25px] rounded-md flex justify-center bg-white items-center text-[12px] transition-all ease hover:border-[#125B9A]"
+                    onClick={() => handleDetailClick(student.id)}
+                  >
                     <FontAwesomeIcon
                       className="text-[#125B9A]"
                       icon={faEllipsisVertical}
