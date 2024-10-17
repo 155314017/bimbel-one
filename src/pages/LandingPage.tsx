@@ -8,7 +8,7 @@ const caraDaftar = [
   {
     title: "1. Pendaftaran",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, deserunt! Nisi doloremque omnis obcaecati maxime? Architecto eos rerum quibusdam eligendi molestias ipsa amet. Officiis, explicabo at est rerum voluptatem perspiciatis!",
+      "Register",
   },
   {
     title: "2. klik tombol",
