@@ -1,5 +1,5 @@
 import GoogleMaps from "../medium/GoogleMaps";
-import Logo from "../../assets/logo.png"
+import Logo from "../../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex md:flex-row flex-col md:justify-between lg:justify-center md:gap-20 lg:gap-0">
           <div className="md:max-w-[50%] flex md:gap-20 gap-10">
             <div className="flex flex-col gap-5">
-              <img src={Logo} alt="BimbelOne" />
+              <img src={Logo} alt="BimbelOne" className="w-[400px]"/>
 
               <h1 className="md:text-[16px] text-[12px] font-bold capitalize tracking-wide">
                 Our menu
@@ -19,19 +19,13 @@ export default function Footer() {
                   Home
                 </li>
                 <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#fff] after:h-[1px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                  Profile
+                  About Us
                 </li>
                 <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#fff] after:h-[1px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                  Health Services
+                  Academics
                 </li>
                 <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#fff] after:h-[1px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                  Information Center
-                </li>
-                <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#fff] after:h-[1px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                  Complaint
-                </li>
-                <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#fff] after:h-[1px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                  Reservation
+                  Registration Now
                 </li>
               </ul>
             </div>
@@ -45,7 +39,7 @@ export default function Footer() {
                     Email:
                   </p>
                   <p className="md:text-base text-white md:text-[14px] text-[12px]">
-                    9wSbU@example.com
+                    admission@bimbelone.com
                   </p>
                 </div>
                 <div className="flex">
@@ -53,13 +47,7 @@ export default function Footer() {
                     Phone:
                   </p>
                   <p className="md:text-base text-white md:text-[14px] text-[12px]">
-                    (+91) 1234567890
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="md:text-base text-white md:text-[14px] text-[12px] md:w-24 w-12">Fax:</p>
-                  <p className="md:text-base text-white md:text-[14px] text-[12px]">
-                    (+91) 1234567890
+                    +62 818475390
                   </p>
                 </div>
               </div>
@@ -69,10 +57,12 @@ export default function Footer() {
                   address
                 </h1>
                 <p className="md:text-base text-white md:text-[14px] text-[12px]">
-                  Indonesia - DIY <br />
-                  Jalan Jendal Sudirman KM 20, No.50, Rt.23, Rw.34
+                  FP One TCC Batavia Tower One
                   <br />
-                  Daerah Istimewa Yogyakarta (123123431)
+                  <br />
+                  Jl. K.H. Mas Mansyur No.Kav. 126, RT.9/RW.3, Karet Tengsin,
+                  Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus
+                  Ibukota Jakarta 10220
                 </p>
               </div>
             </div>
