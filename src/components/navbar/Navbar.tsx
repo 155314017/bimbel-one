@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="h-[72px] bg-white shadow-lg flex justify-center fixed top-0 left-0 right-0 z-50">
-        <div className="container flex justify-between items-center px-6 md:px-0 md:max-w-[1328px]">
+        <div className="container flex justify-between items-center px-6 md:px-0 md:max-w-[1200px]">
           <img src={Logo} alt="bimbel-one" className="cursor-pointer" />
           <div className="md:hidden z-50" onClick={toggleMenu}>
             <div className="{`transition-transform duration-300 ease-in-out transform ${isOpen ? 'rotate-90' : 'rotate-0'}`}">

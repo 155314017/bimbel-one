@@ -59,7 +59,7 @@ export default function LandingPage() {
 
       {/* Cara mendaftar */}
       <section id="register" className="md:mt-[50px] mt-[20px] flex justify-center">
-        <div className="md:h-[352px] md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] shadow-lg p-8 md:mt-[100px]">
+        <div className="md:h-[352px] md:w-[1200px] w-[330px] bg-[#EAF5FE] rounded-[10px] shadow-lg p-8 md:mt-[100px]">
           <h1 className="text-[20px] font-bold mb-2">How to Register?</h1>
           <h1 className="text-[14px]">
             Follow the step below to join <b>BimbelOne</b>:
@@ -179,7 +179,7 @@ export default function LandingPage() {
 
       {/* announcements */}
       <div className="md:mt-[50px] mt-[30px] flex justify-center">
-        <div className="md:h-[244px] md:w-[1318px] w-[100%] bg-[#125B9A] md:rounded-[10px] md:p-10 p-6 text-center flex flex-col items-center md:gap-8 gap-4">
+        <div className="md:h-[244px] md:w-[1200px] w-[100%] bg-[#125B9A] md:rounded-[10px] md:p-10 p-6 text-center flex flex-col items-center md:gap-8 gap-4">
           <p className="md:text-[20px] text-[16px] font-bold text-white">
             Announcements
           </p>
@@ -195,7 +195,7 @@ export default function LandingPage() {
 
       {/* program type */}
       <section id="academics" className="md:mt-[50px] mt-[30px] flex  justify-center">
-        <div className="md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] md:p-10 p-6 md:mt-[100px]">
+        <div className="md:w-[1200px] w-[330px] bg-[#EAF5FE] rounded-[10px] md:p-10 p-6 md:mt-[100px]">
           <h1 className="md:text-[20px] text-[16px] font-bold capitalize md:mb-10 mb-6">
             Academics Program
           </h1>
