@@ -285,9 +285,9 @@ export default function LandingPage() {
 
       {/* our team */}
       <div className="mt-[50px] flex justify-center">
-        <div className="md:w-[1280px] md:h-[399px] w-full flex flex-col items-center gap-10">
+        <div className="md:w-[1200px] md:h-[399px] w-full flex flex-col items-center gap-10">
           <h1 className="text-[20px] font-bold capitalize">our team</h1>
-          <div className="w-full md:w-[1280px] overflow-x-auto px-20 md:px-0 no-scrollbar">
+          <div className="w-full md:w-[1200px] overflow-x-auto px-20 md:px-0 no-scrollbar">
             <div className="flex gap-4">
               <TeamPhoto />
             </div>
