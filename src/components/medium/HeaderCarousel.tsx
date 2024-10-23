@@ -55,7 +55,7 @@ export default function HeaderCarousel() {
 
   return (
     <div>
-      <div className="w-[330px] h-[308px] rounded-[10px] relative bg-gray-900 md:w-[1318px]">
+      <div className="w-[330px] h-[308px] rounded-[10px] relative bg-gray-900 md:w-[1318px] md:h-[600px]">
         <img
           src={shuffledImages[currentIndex]}
           alt="Carousel"

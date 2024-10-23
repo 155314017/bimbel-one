@@ -37,7 +37,7 @@ export default function LandingPage() {
     <div>
       <Navbar />
       {/* banner */}
-      <div className="flex justify-center md:mt-[100px] mt-[90px]">
+      <div className="flex justify-center md:mt-[100px] mt-[90px] ">
         <div className="relative">
           <HeaderCarousel />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
@@ -58,8 +58,8 @@ export default function LandingPage() {
       </div>
 
       {/* Cara mendaftar */}
-      <div className="md:mt-[50px] mt-[20px] flex justify-center">
-        <div className="md:h-[352px] md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] shadow-lg p-8">
+      <section id="register" className="md:mt-[50px] mt-[20px] flex justify-center">
+        <div className="md:h-[352px] md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] shadow-lg p-8 md:mt-[100px]">
           <h1 className="text-[20px] font-bold mb-2">How to Register?</h1>
           <h1 className="text-[14px]">
             Follow the step below to join <b>BimbelOne</b>:
@@ -81,11 +81,11 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* about us */}
-      <div className="md:mt-[50px] mt-[24px] flex justify-center">
-        <div className="md:h-[354px] w-[330px] md:w-[1263px] flex flex-col md:flex-row gap-8">
+      <section id="about" className="md:mt-[50px] mt-[24px] flex justify-center">
+        <div className="md:h-[354px] w-[330px] md:w-[1263px] flex flex-col md:flex-row gap-8 md:mt-[60px]">
           <div className="md:max-w-[50%]">
             {/* <img
               src="https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -175,7 +175,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* announcements */}
       <div className="md:mt-[50px] mt-[30px] flex justify-center">
@@ -194,8 +194,8 @@ export default function LandingPage() {
       </div>
 
       {/* program type */}
-      <div className="md:mt-[50px] mt-[30px] flex  justify-center">
-        <div className="md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] md:p-10 p-6">
+      <section id="academics" className="md:mt-[50px] mt-[30px] flex  justify-center">
+        <div className="md:w-[1318px] w-[330px] bg-[#EAF5FE] rounded-[10px] md:p-10 p-6 md:mt-[100px]">
           <h1 className="md:text-[20px] text-[16px] font-bold capitalize md:mb-10 mb-6">
             Academics Program
           </h1>
@@ -281,7 +281,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* our team */}
       <div className="mt-[50px] flex justify-center">

@@ -58,13 +58,13 @@ export default function Navbar() {
                 <Link to="/">Home</Link>
               </li>
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                About Us
+                <a href="#about">About Us</a>
               </li>
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                Academics
+                <a href="#academics">Academics</a>
               </li>
               <li className="relative pb-1 after:absolute after:left-1/2 after:bottom-0 after:bg-[#E85F10] after:h-[2px] after:w-0 after:transition-all after:duration-300 after:ease-in-out after:transform after:-translate-x-1/2 hover:after:w-full">
-                Registration Now
+                <a href="#register">Registration Now</a>
               </li>
             </ul>
             <div className="flex justify-center gap-3 mb-5 md:mb-0">
