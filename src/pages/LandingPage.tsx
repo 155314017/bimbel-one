@@ -179,7 +179,7 @@ export default function LandingPage() {
 
       {/* announcements */}
       <div className="md:mt-[50px] mt-[30px] flex justify-center">
-        <div className="md:h-[244px] md:w-[1200px] w-[100%] bg-[#125B9A] md:rounded-[10px] md:p-10 p-6 text-center flex flex-col items-center md:gap-8 gap-4">
+        <div className="md:h-[244px] md:w-full w-[100%] bg-[#125B9A] md:p-10 p-6 text-center flex flex-col items-center md:gap-8 gap-4">
           <p className="md:text-[20px] text-[16px] font-bold text-white">
             Announcements
           </p>
